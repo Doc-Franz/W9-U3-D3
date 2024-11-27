@@ -6,15 +6,23 @@ class SingleBook extends Component {
     selected: false
   };
 
-  handleSelected = () => {
-    this.setState({ selected: true });
+  handleCardClick = () => {
+    if (!this.state.selected) {
+      this.setState({ selected: true });
+    }
+  };
+
+  handleImageClick = () => {
+    if (this.state.selected) {
+      this.setState({ selected: false });
+    }
   };
 
   render() {
     return (
       <Col className="mb-3">
-        <Card style={{ height: "800px" }} onClick={this.handleSelected} className={this.state.selected && "border border-danger"}>
-          <Card.Img variant="top" src={this.props.src} />
+        <Card style={{ height: "800px" }} onClick={this.handleCardClick} className={this.state.selected ? "border border-danger" : ""}>
+          <Card.Img variant="top" src={this.props.src} onClick={this.handleImageClick} />
           <Card.Body>
             <Card.Title>{this.props.title}</Card.Title>
             <Card.Text>Some quick example text to build on the card title and make up the bulk of the content.</Card.Text>
