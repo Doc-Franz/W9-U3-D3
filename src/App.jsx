@@ -4,13 +4,14 @@ import MyNav from "./components/MyNav";
 import Welcome from "./components/Welcome";
 import MyFooter from "./components/MyFooter";
 import BookList from "./components/BookList";
+import fantasy from "./data/fantasy.json";
 
 function App() {
   return (
     <>
       <MyNav />
       <Welcome />
-      <BookList />
+      <BookList books={fantasy} />
       <MyFooter />
     </>
   );

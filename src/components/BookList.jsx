@@ -1,5 +1,4 @@
 import { Component } from "react";
-import books from "../data/fantasy.json";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import SingleBook from "./SingleBook";
 
@@ -46,11 +45,11 @@ class BookList extends Component {
         </Row>
 
         <Row sm={2} lg={3}>
-          {!this.state.formSubmitted && books.map((book) => <SingleBook key={book.asin} src={book.img} title={book.title} />)}
+          {!this.state.formSubmitted && this.props.books.map((book) => <SingleBook key={book.asin} book={book} />)}
           {this.state.formSubmitted &&
-            books
+            this.props.books
               .filter((book) => book.title.toLowerCase().includes(this.state.inputText.toLowerCase()))
-              .map((book) => <SingleBook key={book.asin} src={book.img} title={book.title} />)}
+              .map((book) => <SingleBook key={book.asin} book={book} />)}
         </Row>
       </Container>
     );
